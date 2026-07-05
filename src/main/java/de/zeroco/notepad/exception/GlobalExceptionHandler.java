@@ -21,21 +21,21 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
-//    // Handles any other DB error (bad SQL, constraint violation, connection issue)
-//    @ExceptionHandler(DataAccessException.class)
-//    public ResponseEntity<Map<String, Object>> handleDataAccess(DataAccessException ex) {
-//        Map<String, Object> response = new HashMap<>();
-//        response.put("success", false);
-//        response.put("error", "Database error occurred");
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-//    }
-//
-//    // Catches absolutely anything else
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<Map<String, Object>> handleGeneric(Exception ex) {
-//        Map<String, Object> response = new HashMap<>();
-//        response.put("success", false);
-//        response.put("error", "Something went wrong");
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-//    }
+   // Handles any other DB error (bad SQL, constraint violation, connection issue)
+   @ExceptionHandler(DataAccessException.class)
+   public ResponseEntity<Map<String, Object>> handleDataAccess(DataAccessException ex) {
+       Map<String, Object> response = new HashMap<>();
+       response.put("success", false);
+       response.put("error", "Database error occurred");
+       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+   }
+
+   // Catches absolutely anything else
+   @ExceptionHandler(Exception.class)
+   public ResponseEntity<Map<String, Object>> handleGeneric(Exception ex) {
+       Map<String, Object> response = new HashMap<>();
+       response.put("success", false);
+       response.put("error", "Something went wrong");
+       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+   }
 }
